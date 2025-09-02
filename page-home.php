@@ -4,6 +4,15 @@
  * Template Name: Home Page
  */
 
+// Custom Fields
+$prelaunch_price = get_post_meta( 7, 'prelaunch_price', true); // post id in URL 
+$launch_price = get_post_meta( 7, 'launch_price', true); // post id in URL 
+$final_price = get_post_meta( 7, 'final_price', true); // post id in URL 
+$course_url = get_post_meta( 7, 'course_url', true); // post id in URL 
+$button_text = get_post_meta( 7, 'button_text', true); // post id in URL 
+$optin_text = get_post_meta( 7, 'optin_text', true); // post id in URL 
+$optin_button_text = get_post_meta( 7, 'optin_button_text', true); // post id in URL 
+
 get_header();
 ?>
 
@@ -17,24 +26,23 @@ get_header();
                 </div>
 
                 <div class="col-sm-7 hero-text">
-                    <h1>Bootstrap to WordPress</h1>
-                    <p class="lead">Earn An Extra $1k - $5k a Month by Learning to Your Your Very Own Responsive
-                        &amp; Custom WordPress Websites with Bootstrap</p>
+                    <h1><?php bloginfo('name'); ?></h1>
+                    <p class="lead"><?php bloginfo('description'); ?></p>
                     <div id="price-timeline">
                         <div class="price active">
                             <h4>Pre-Launch Price <small>Ends soon!</small></h4>
-                            <span>$149</span>
+                            <span><?= $prelaunch_price; ?></span>
                         </div>
                         <div class="price">
                             <h4>Launch Price <small>Coming soon!</small></h4>
-                            <span>$299</span>
+                            <span><?= $launch_price; ?></span>
                         </div>
                         <div class="price">
                             <h4>Final Price <small>Coming soon!</small></h4>
-                            <span>$149</span>
+                            <span><?= $final_price; ?></span>
                         </div>
                     </div>
-                    <p><a href="/" class="btn btn-lg btn-danger" role="button">Enroll &raquo;</a></p>
+                    <p><a href="<?= $course_url; ?>" class="btn btn-lg btn-danger" role="button"><?= $button_text; ?></a></p>
                 </div>
             </div>
         </div>
@@ -47,15 +55,14 @@ get_header();
         <div class="row">
             <div class="col-sm-8">
                 <p class="lead">
-                    <strong>Subscribe to our mail list.</strong>
-                    We'll send something special as a thank you.
+                    <?= $optin_text; ?>
                 </p>
             </div>
 
             <div class="col-sm-4">
                 <button class="btn btn-success btn-lg d-block w-100" data-bs-toggle="modal"
                     data-bs-target="#myModal">
-                    Click here to subscribe
+                    <?= $optin_button_text; ?>
                 </button>
             </div>
         </div>
