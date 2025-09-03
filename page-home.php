@@ -5,13 +5,13 @@
  */
 
 // Custom Fields
-$prelaunch_price = get_post_meta( 7, 'prelaunch_price', true); // post id in URL 
-$launch_price = get_post_meta( 7, 'launch_price', true); // post id in URL 
-$final_price = get_post_meta( 7, 'final_price', true); // post id in URL 
-$course_url = get_post_meta( 7, 'course_url', true); // post id in URL 
-$button_text = get_post_meta( 7, 'button_text', true); // post id in URL 
-$optin_text = get_post_meta( 7, 'optin_text', true); // post id in URL 
-$optin_button_text = get_post_meta( 7, 'optin_button_text', true); // post id in URL 
+$prelaunch_price = get_post_meta(7, 'prelaunch_price', true); // post id in URL 
+$launch_price = get_post_meta(7, 'launch_price', true); // post id in URL 
+$final_price = get_post_meta(7, 'final_price', true); // post id in URL 
+$course_url = get_post_meta(7, 'course_url', true); // post id in URL 
+$button_text = get_post_meta(7, 'button_text', true); // post id in URL 
+$optin_text = get_post_meta(7, 'optin_text', true); // post id in URL 
+$optin_button_text = get_post_meta(7, 'optin_button_text', true); // post id in URL 
 
 // Advanced Custom Fields
 $income_feature_img = get_field('income_feature_image');
@@ -21,6 +21,11 @@ $reason_1_title = get_field('reason_1_title');
 $reason_1_desc = get_field('reason_1_description');
 $reason_2_title = get_field('reason_2_title');
 $reason_2_desc = get_field('reason_2_description');
+
+$who_feature_img = get_field('who_feature_image');
+$who_section_title = get_field('who_section_title');
+$who_section_body = get_field('who_section_body');
+
 get_header();
 ?>
 
@@ -82,10 +87,10 @@ get_header();
     <div class="container">
         <div class="section-header">
             <!-- If user uploaded and image -->
-            <?php if ( !empty($income_feature_img) ) : ?>
-            <img src="<?= $income_feature_img['url'] ?>" alt="<?= $income_feature_img['alt'] ?>">
+            <?php if (!empty($income_feature_img)) : ?>
+                <img src="<?= $income_feature_img['url'] ?>" alt="<?= $income_feature_img['alt'] ?>">
             <?php endif; ?>
-            
+
             <h2><?= $income_section_title; ?></h2>
         </div>
 
@@ -109,48 +114,18 @@ get_header();
 <section id="who-benefits">
     <div class="container">
         <div class="section-header">
-            <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/icon-pad.png" alt="Pad and pencil">
-            <h2>Who Should Take This Course?</h2>
+
+            <!-- If user uploaded and image -->
+            <?php if (!empty($income_feature_img)) : ?>
+                <img src="<?= $who_feature_img['url'] ?>" alt="<?= $who_feature_img['alt'] ?>">
+            <?php endif; ?>
+
+            <h2><?= $who_section_title; ?></h2>
         </div>
 
         <div class="row">
             <div class="col-sm-8 offset-sm-2">
-                <h3>Graphics &amp; Web Designers</h3>
-                <p>Graphic designers are extremely talented, but ask them to code their designs and they&rsquo;ll
-                    freeze up! This leaves them with no other choice but to hire a web developer. Any professional
-                    graphic designers knows web developers can be expensive. If you&rsquo;re a designer, learning to
-                    code your own WordPress websites can change your business entirely! Now, not only are you a
-                    great designer, but you&rsquo;re a skillful developer, too! This puts you in a position to
-                    <strong>make an extra $1,000 – $5,000 per project.</strong>
-                </p>
-
-                <h3>Entrepreneurs</h3>
-                <p>Entrepreneurs have big dreams, and in many cases, shoestring budgets. In order to survive in the
-                    cut-throat world of the Startup company, it&rsquo;s a necessity to have a world-class website.
-                    However, world-class websites come with a large price tag. If you can learn how to build a
-                    high-quality startup website by yourself, then you&rsquo;ve just saved yourself a lot of cash,
-                    tens of
-                    thousands of dollars in many cases.</p>
-
-                <h3>Employees</h3>
-                <p>Any company knows the education & training of their employees is key to a thriving team.
-                    Depending on the type of company you work for, if you understand how to code, and can develop
-                    CMS driven websites, that gives you negotiating power for a better position, or a higher salary.
-                </p>
-
-                <h3>Code Hobbyists</h3>
-                <p>It&rsquo;s fun to learn challenging new skills. Code hobbyists can add dynamic websites to their
-                    arsenal of tools to play with — you can even sell WordPress themes and plugins for cash! The
-                    possibilities are truly endless.</p>
-
-                <h3>People Looking for a New Career</h3>
-                <p>Are you out of work? Looking for a more rewarding job? Desire a career that can allow you to work
-                    almost anywhere in the world? Becoming a Web Developer might be the answer for you.</p>
-                <h3>Web developers are paid well, anywhere from $33,000 to more than $105,000 per year.</h3>
-                <p>They get to work at amazing companies that are changing the world, or they enjoy the ability to
-                    start their own companies, become location-independent and work from home, from coffee shops, in
-                    an airplane, on the beach, or wherever they want!</p>
-
+                <?= $who_section_body; ?>
             </div>
         </div>
     </div>
