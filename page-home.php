@@ -33,6 +33,16 @@ $features_section_body = get_field('features_section_body');
 $project_feature_title = get_field('project_feature_title');
 $project_feature_body = get_field('project_feature_body');
 
+$instructor_section_title = get_field('instructor_section_title');
+$instructor_name = get_field('instructor_name');
+$bio_excerpt = get_field('bio_excerpt');
+$full_bio = get_field('full_bio');
+$x_username = get_field('x_username');
+$facebook_username = get_field('facebook_username');
+$instagram_username = get_field('instagram_username');
+$num_students = get_field('num_students');
+$num_reviews = get_field('num_reviews');
+$num_courses = get_field('num_courses');
 
 get_header();
 ?>
@@ -227,31 +237,28 @@ get_header();
             <div class="col-sm-8 col-md-6">
                 <div class="row">
                     <div class="col-lg-8">
-                        <h2>Your Student <small>Erika Carriedo</small></h2>
+                        <h2><?= $instructor_section_title; ?> <small><?= $instructor_name?></small></h2>
                     </div>
                     <div class="col-lg-4">
-                        <a href="https://x.com/ecarri" class="badge social x" target="_blank"><i
+                        <?php if (!empty($x_username)) : ?>
+                        <a href="https://x.com/<?= $x_username; ?>" class="badge social x" target="_blank"><i
                                 class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://facebook.com/ecarri" class="badge social facebook" target="_blank"><i
+                        <?php endif; ?>
+
+                        <?php if (!empty($facebook_username)) : ?>
+                        <a href="https://facebook.com/<?= $facebook_username; ?>" class="badge social facebook" target="_blank"><i
                                 class="fa-brands fa-facebook"></i></a>
-                        <a href="https://instagram.com/ecarri" class="badge social instagram" target="_blank"><i
+                        <?php endif; ?>
+
+                        <?php if (!empty($instagram_username)) : ?>
+                        <a href="https://instagram.com/<?= $instagram_username; ?>" class="badge social instagram" target="_blank"><i
                                 class="fa-brands fa-instagram"></i></a>
+                        <?php endif; ?>
                     </div>
                 </div>
 
-                <p class="lead">A highly skilled professional, Erika Carriedo is a passionate and experienced web
-                    designer, developer, blogger and digital entrepreneur.</p>
-                <p>Hailing from North Of The Wall (Yellowknife, Canada), Erika made the trek to the Wet Coast
-                    (Vancouver, Canada) to educate and equip herself with the necessary skills to become a spearhead
-                    in her trade of solving problems on the web, crafting design solutions, and speaking in code.
-                </p>
-                <p>Erika's determination and love for what she does has landed her in some pretty interesting places
-                    with some neat people. She's had the privilege of working with, and providing solutions for,
-                    numerous businesses, big & small, across the Americas. </p>
-                <p>Erika builds custom websites, and provides design solutions for a wide-array of clientele at his
-                    company, Brightside Studios. She regularly blogs about passive income, living your life to the
-                    fullest, and provides premium quality web design tutorials and courses for tens of thousands of
-                    amazing people desiring to master their craft.</p>
+                <p class="lead"><?= $bio_excerpt; ?></p>
+                <?= $full_bio; ?>
 
                 <hr>
 
@@ -261,21 +268,21 @@ get_header();
                     <div class="col-4">
                         <div class="num">
                             <div class="num-content">
-                                41,000+ <span>students</span>
+                                <?= $num_students; ?> <span>students</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="num">
                             <div class="num-content">
-                                568 <span>reviews</span>
+                                <?= $num_reviews; ?> <span>reviews</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="num">
                             <div class="num-content">
-                                8 <span>courses</span>
+                                <?= $num_courses; ?> <span>courses</span>
                             </div>
                         </div>
                     </div>
