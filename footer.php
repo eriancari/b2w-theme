@@ -32,7 +32,7 @@
         <div class="row align-items-center">
             <!-- logo -->
             <div class="col-md-3">
-                <p><a href="/"><img src="assets/img/logo.png" class="img-fluid" alt="Bootstrap to WordPress"></a></p>
+                <p><a href="/"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/logo.png" class="img-fluid" alt="Bootstrap to WordPress"></a></p>
             </div>
             <!-- Menu -->
             <div class="col-md-6 text-center">
