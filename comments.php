@@ -21,18 +21,18 @@ if ( post_password_required() ) {
 ?>
 
 <div id="comments" class="comments-area">
-
+	<div class="comments-wrap">
 	<?php
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
 		?>
-		<h2 class="comments-title">
+		<h3 class="comments-title">
 			<?php
 			$bootstrap2wordpress_comment_count = get_comments_number();
 			if ( '1' === $bootstrap2wordpress_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'bootstrap2wordpress' ),
+					esc_html__( 'One comment on &ldquo;%1$s&rdquo;', 'bootstrap2wordpress' ),
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			} else {
@@ -44,7 +44,7 @@ if ( post_password_required() ) {
 				);
 			}
 			?>
-		</h2><!-- .comments-title -->
+		</h3><!-- .comments-title -->
 
 		<?php the_comments_navigation(); ?>
 
@@ -73,5 +73,5 @@ if ( post_password_required() ) {
 
 	comment_form();
 	?>
-
+	</div>
 </div><!-- #comments -->
