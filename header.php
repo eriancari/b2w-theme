@@ -71,14 +71,6 @@
 							'menu_class'		=> 'navbar-nav ms-auto'
 						))
 					?>
-                    <!-- <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                            <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                        </ul>
-                    </div> -->
                 </div>
             </nav>
         </div>

@@ -35,7 +35,7 @@
                 <p><a href="/"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/logo.png" class="img-fluid" alt="Bootstrap to WordPress"></a></p>
             </div>
             <!-- Menu -->
-            <div class="col-md-6 text-center">
+            <!-- <div class="col-md-6 text-center">
                 <ul class="list-unstyled list-inline mb-0">
                     <li class="list-inline-item"><a href="">Home</a></li>
                     <li class="list-inline-item"><a href="">Blog</a></li>
@@ -43,10 +43,17 @@
                     <li class="list-inline-item"><a href="">Contact</a></li>
                     <li class="list-inline-item signup-link"><a href="">Sign up now</a></li>
                 </ul>
-                </nav>
-            </div>
+            </div> -->
+            <?php 
+						wp_nav_menu( array(
+							'theme_location'	=> 'footer',
+							'container'			=> 'nav',
+							'container_class'	=> 'col-md-6 text-center',
+							'menu_class'		=> 'list-unstyled list-inline mb-0'
+						))
+					?>
             <div class="col-md-3">
-                <p class="pull-right">&copy;2025 Erika Carriedo</p>
+                <p class="pull-right"><?php bloginfo('name'); ?> &copy; <?php echo date('Y');?> <?php echo the_author_link();?></p>
             </div>
         </div>
     </div>

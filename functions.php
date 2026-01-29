@@ -50,6 +50,7 @@ function bootstrap2wordpress_setup() {
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'bootstrap2wordpress' ),
+			'footer' => esc_html__( 'Footer', 'bootstrap2wordpress' ),
 		)
 	);
 
@@ -197,3 +198,8 @@ function new_excerpt_more($more) {
 	return '... <a class="moretag" href="' . get_permalink($post->ID) . '"> continue reading </a>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
+
+add_filter('nav_menu_css_class', function ($classes, $item, $args) {
+	$classes[] = 'list-inline-item';
+	return $classes;
+}, 10, 3);
