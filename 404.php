@@ -9,52 +9,80 @@
 
 get_header();
 ?>
-
-	<main id="primary" class="site-main">
-
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'bootstrap2wordpress' ); ?></h1>
-			</header><!-- .page-header -->
-
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'bootstrap2wordpress' ); ?></p>
-
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'bootstrap2wordpress' ); ?></h2>
-						<ul>
+	<section class="feature-image feature-image-default-alt" data-type="background" data-speed="2">
+		<h1 class="page-title">Bummer! That page doesn't exist.</h1>
+	</section>
+	
+	<div class="container">
+		<div id="primary" class="row">
+			<main id="content" class="col-sm-8">
+				<div class="error-404 not-found">
+					<div class="page-content">
+						<h2>Don't fret! Let's get you back on track.</h2>
+						<!-- RESOURCES
+						================================================== -->
+						<h3>Resources</h3>
+						<p>Here are some helpful links instead:</p>
+						<?php $loop = new WP_Query( array('post_type' => 'resource', 'orderby' => 'post_id', 'order' => 'ASC') ); ?>
+						<div class="resource-row clearfix">
+							<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 							<?php
-							wp_list_categories(
-								array(
+								$resource_img = get_field('resource_image');
+								$resource_url = get_field('resource_url');
+								$button_text = get_field('button_text');
+							?>
+							<div class="resource">
+								<img src="<?=$resource_img['url']; ?>" alt="<?=$resource_img['alt']; ?>" />
+								
+								<h3><a href="<?=$resource_url; ?>"><?php the_title(); ?></a></h3>
+								
+								<?php the_content(); ?>
+								
+								<?php if ( !empty($button_text) ) : ?>
+								<a href="<?=$resource_url; ?>" class="btn btn-success"><?=$button_text; ?></a>
+								<?php endif; ?>
+								
+							</div>
+
+							<?php endwhile; ?>
+						</div>
+
+						<!-- CATEGORIES
+						================================================== -->
+						<h3>Categories</h3>
+						<p>..or maybe a popular category?</p>
+
+						<div class="widget widget_categories">
+							<h4 class="widget-title">Most Used Categories</h4>
+							<ul>
+								<?php wp_list_categories(array(
 									'orderby'    => 'count',
 									'order'      => 'DESC',
 									'show_count' => 1,
 									'title_li'   => '',
 									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
+								)); ?>
+							</ul>
+						</div>
 
-					<?php
-					/* translators: %1$s: smiley */
-					$bootstrap2wordpress_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'bootstrap2wordpress' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$bootstrap2wordpress_archive_content" );
+						<!-- ARCHIEVES
+						================================================== -->
+						<h3>Archives</h3>
+						<p>You can always sort through our archieves...</p>
 
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
+						<?php the_widget('WP_Widget_Archives', 'title=Our archieves','before_title=<h4 class="widget-title">&after_title=</h4>'); ?>
 
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
-
+						<p>..or, just head back to the <a href="<?php echo home_url(); ?>">homepage</a>.</p>
+					</div>
+				</div>
+			</main>
+			<!-- SIDEBAR
+			================================================== -->
+			<aside class="col-sm-4">	
+				<?php get_sidebar(); ?>
+			</aside>
+			
+		</div>
+	</div>
 <?php
 get_footer();
